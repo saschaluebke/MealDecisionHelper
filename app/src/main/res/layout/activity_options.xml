@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sascha.mealdecisionhelper.ui.OptionsActivity"
+    android:background="@drawable/bg_gradient">
+
+
+    <Button
+        android:id="@+id/optionsNewCategoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#40ffffff"
+        android:text="@string/new_category"
+        android:textColor="#ffffffff"
+        android:layout_below="@+id/ShopButton2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/optionsRemoveCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#40ffffff"
+        android:textColor="#ffffffff"
+        android:text="@string/remove_last_category"
+        android:layout_above="@+id/optionsCategoryList"
+        android:layout_toLeftOf="@+id/resetButton"
+        android:layout_toStartOf="@+id/resetButton"
+        android:layout_marginRight="10dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/optionsCategoryList"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/optionsNewCategoryButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#40ffffff"
+        android:textColor="#ffffffff"/>
+
+    <Button
+        android:id="@+id/ShopButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/ShopButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        android:layout_below="@+id/ShopButton1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/ShopButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ShopButton1"
+        android:layout_toEndOf="@+id/ShopButton1"
+        android:layout_marginLeft="15dp"/>
+
+    <Button
+        android:id="@+id/ShopButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        android:layout_alignBaseline="@+id/ShopButton2"
+        android:layout_alignBottom="@+id/ShopButton2"
+        android:layout_alignLeft="@+id/ShopButton3"
+        android:layout_alignStart="@+id/ShopButton3" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="reset"
+        android:textColor="#ffffffff"
+        android:layout_above="@+id/optionsCategoryList"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/ShopButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/ShopButton6"
+        android:layout_alignStart="@+id/ShopButton6"
+       />
+
+    <Button
+        android:id="@+id/ShopButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#40ffffff"
+        android:text="@string/shop_name"
+        android:textColor="#ffffffff"
+        android:layout_alignBaseline="@+id/ShopButton4"
+        android:layout_alignBottom="@+id/ShopButton4"
+        android:layout_toRightOf="@+id/ShopButton4"
+        android:layout_toEndOf="@+id/ShopButton4"
+        android:layout_marginLeft="15dp"/>
+</RelativeLayout>

@@ -1,4 +1,80 @@
 <resources>
-    <string name="app_name">MealDecisionHelper</string>
-    <string name="title_activity_recipe">recipeActivity</string>
+    <string name="app_name">Meal Decision</string>
+    <string name="not_specified">Not Specified</string>
+
+    <string name="category_vegetables">Vegetables</string>
+        <string name="potato">Potato</string>
+        <string name="carrot">Carrot</string>
+        <string name="spring_onion">Spring Onion</string>
+        <string name="onion">Onion</string>
+        <string name="garlic">Garlic</string>
+        <string name="salad">Salad</string>
+        <string name="mushroom">Mushroom</string>
+        <string name="tomato">Tomato</string>
+        <string name="sauerkraut">Sauerkraut</string>
+        <string name="cucumber">Cucumber</string>
+        <string name="spinach">Spinach</string>
+        <string name="broccoli">Broccoli</string>
+        <string name="napa_cabbage">Napa Cabbage</string>
+        <string name="zucchini">Zucchini</string>
+        <string name="radish">Radish</string>
+        <string name="peppers">Peppers</string>
+        <string name="rice">Rice</string>
+    <string name="category_fruits">Fruits</string>
+        <string name="banana">Banana</string>
+        <string name="apple">Apple</string>
+        <string name="kiwi">Kiwi</string>
+        <string name="grape">Grape</string>
+    <string name="category_meat">Meat</string>
+        <string name="tuna">Thuna</string>
+        <string name="hash">Hash</string>
+        <string name="steak">Steak</string>
+        <string name="sausage">Sausage</string>
+    <string name="category_sweets">Sweets</string>
+         <string name="cookie">Cookie</string>
+    <string name="dairy_products">Dairy Products</string>
+        <string name="milk">Milk</string>
+        <string name="mozzarella">Mozzarella</string>
+        <string name="parmesan">Parmesan</string>
+        <string name="pizza_cheese">Pizza Cheese</string>
+    <string name="frozen_food">Frozen Food</string>
+        <string name="frozen_berries">Frozen Berries</string>
+        <string name="frozen_salmon">Frozen Salmon</string>
+        <string name="ice_cream">Ice Cream</string>
+    <string name="bakery_products">Bakery Products</string>
+        <string name="flour">Flour</string>
+        <string name="bun">Bun</string>
+        <string name="bread">Bread</string>
+    <string name="pasta">Pasta</string>
+        <string name="spaghetti">Spaghetti</string>
+        <string name="lasagne_plates">Lasagne Plates</string>
+    <string name="category_other">Other</string>
+         <string name="toilet_paper">Toilet Paper</string>
+    <string name="eggs">Eggs</string>
+        <string name="egg">egg</string>
+    <string name="pickled_ware">Pickled Ware</string>
+        <string name="pickled_cucumber">Pickled Cucumber</string>
+        <string name="sieved_tomatos">Sieved Tomatos</string>
+
+    <string-array name="units">
+        <item>ml</item>
+        <item>g</item>
+        <item>Piece</item>
+    </string-array>
+
+    <string name="new_category">New Category</string>
+    <string name="new_ingredient">New Ingredient</string>
+    <string name="new_recipe">New Recipe</string>
+    <string name="recipe">Recipe</string>
+    <string name="remove_last_category">remove last</string>
+    <string name="remove_last_category_message">All ingredients of this Category will be lost, even your recipes!</string>
+    <string name="shoppingList">Shoppinglist</string>
+    <string name="options">Options</string>
+    <string name="create_new_shoppinglist">Create new Shoppinglist</string>
+    <string name="remove">remove</string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="reset">Are you sure you want to reset all recipes, ingredients and categories?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 </resources>

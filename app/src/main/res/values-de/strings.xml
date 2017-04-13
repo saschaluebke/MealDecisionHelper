@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Meal Decision</string>
+    <string name="not_specified">Keine Angabe</string>
+
+
+    <string name="category_vegetables">Gemüse</string>
+        <string name="potato">Kartoffel</string>
+        <string name="spring_onion">Frühlingszwiebel</string>
+        <string name="carrot">Möhre</string>
+        <string name="onion">Zwiebel</string>
+        <string name="garlic">Knoblauch</string>
+        <string name="salad">Salad</string>
+        <string name="mushroom">Pilz</string>
+        <string name="tomato">Tomate</string>
+        <string name="sauerkraut">Sauerkraut</string>
+        <string name="cucumber">Gurke</string>
+        <string name="spinach">Spinat</string>
+        <string name="broccoli">Brokkoli</string>
+        <string name="napa_cabbage">China Kohl</string>
+        <string name="zucchini">Zucchini</string>
+        <string name="radish">Radieschen</string>
+        <string name="peppers">Paprika</string>
+        <string name="rice">Reis</string>
+    <string name="category_fruits">Obst</string>
+        <string name="banana">Banane</string>
+        <string name="apple">Apfel</string>
+        <string name="kiwi">Kiwi</string>
+        <string name="grape">Trauben</string>
+    <string name="category_meat">Fleisch</string>
+        <string name="tuna">Thunfisch</string>
+        <string name="hash">Hackfleisch</string>
+        <string name="steak">Steak</string>
+        <string name="sausage">Würstchen</string>
+    <string name="category_sweets">Süßigkeiten</string>
+        <string name="cookie">Kekse</string>
+    <string name="dairy_products">Milchprodukte</string>
+        <string name="milk">Milch</string>
+        <string name="mozzarella">Mozzarella</string>
+        <string name="parmesan">Parmesan</string>
+        <string name="pizza_cheese">Pizzakäse</string>
+    <string name="frozen_food">Tiefkühlware</string>
+        <string name="frozen_berries">Tiefkühlbeeren</string>
+        <string name="frozen_salmon">Tiefkühllachs</string>
+        <string name="ice_cream">Speiseeis</string>
+    <string name="bakery_products">Backware</string>
+        <string name="flour">Mehl</string>
+        <string name="bun">Brötchen</string>
+        <string name="bread">Brot</string>
+    <string name="pasta">Teigware</string>
+        <string name="spaghetti">Spaghetti</string>
+        <string name="lasagne_plates">Lasagne Platten</string>
+    <string name="category_other">Sonstiges</string>
+        <string name="toilet_paper">Toilletenpapier</string>
+    <string name="eggs">Eier</string>
+        <string name="egg">Ei</string>
+    <string name="pickled_ware">Eingelegtes</string>
+        <string name="pickled_cucumber">Sauergurken</string>
+        <string name="sieved_tomatos">Passierte Tomaten</string>
+
+    <string-array name="units">
+        <item>ml</item>
+        <item>g</item>
+        <item>Stück</item>
+    </string-array>
+
+    <string name="new_category">Neue Kat.</string>
+    <string name="new_ingredient">Neue Zutat</string>
+    <string name="new_recipe">Neues Rezept</string>
+    <string name="remove_last_category">Letzte löschen</string>
+    <string name="remove_last_category_message">Alle Zutaten aus der Kategorie werden verschwinden auch in den Rezepten!</string>
+    <string name="recipe">Rezept</string>
+    <string name="shoppingList">Einkaufsliste</string>
+    <string name="options">Optionen</string>
+    <string name="create_new_shoppinglist">Neue Einkaufsliste erstellen</string>
+    <string name="remove">löschen</string>
+    <string name="add_ingredient">Zutat hinzufügen</string>
+    <string name="shop_name">Laden</string>
+    <string name="reset">Sind sie sicher alle Zutaten, Rezepte und Kategorien löschen zu wollen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+</resources>

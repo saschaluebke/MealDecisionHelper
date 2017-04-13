@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sascha.mealdecisionhelper.ui.RecipeActivity"
+    tools:context="com.example.sascha.mealdecisionhelper.ui.ChooseCategoryActivity"
     android:background="@drawable/bg_gradient">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@android:id/list"
-        android:layout_marginTop="26dp"
+        android:id="@+id/chooseCategoryList"
+        android:layout_marginTop="29dp"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:layout_below="@+id/newRecipeButton"
-         />
+        android:layout_below="@+id/newCategoryButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +28,7 @@
         android:textColor="#ffffffff"/>
 
     <Button
-        android:id="@+id/newRecipeButton"
+        android:id="@+id/newCategoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -35,10 +36,10 @@
         android:layout_marginTop="23dp"
         android:layout_weight="1"
         android:background="#40ffffff"
-        android:text="@string/new_recipe"
+        android:text="New Category"
         android:textColor="#ffffffff"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@android:id/list" />
-
+        app:layout_constraintTop_toBottomOf="@+id/chooseCategoryList"
+        tools:text="@string/new_category" />
 
 </RelativeLayout>

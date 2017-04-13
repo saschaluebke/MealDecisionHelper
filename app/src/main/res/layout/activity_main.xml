@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,43 +9,68 @@
 
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
         android:text="MealDecisionHelper"
+        android:textColor="#fff"
+        android:textSize="32dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintVertical_bias="0.171"
-        android:id="@+id/textView"
-        android:textColor="#fff"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/rezeptButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
         android:layout_weight="1"
         android:background="#40ffffff"
-        android:text="Rezepte"
+        android:text="@string/recipe"
         android:textColor="#ffffffff"
-        android:layout_marginTop="73dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginLeft="142dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:layout_width="88dp"
+        android:id="@+id/shoppingButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kaufliste"
-        android:id="@+id/buyButton"
-        android:layout_weight="1"
+        android:layout_below="@+id/rezeptButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
         android:background="#40ffffff"
-        android:textColor="#ffffffff"
-        android:layout_marginStart="256dp"
-        tools:layout_editor_absoluteX="148dp"
-        android:layout_marginTop="79dp"
-        app:layout_constraintTop_toBottomOf="@+id/rezeptButton" />
+        android:text="@string/shoppingList"
+        android:textColor="#ffffffff" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="v0.1"
+        android:textColor="#ffffffff"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/optionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rezeptButton"
+        android:layout_alignStart="@+id/rezeptButton"
+        android:layout_below="@+id/shoppingButton"
+        android:layout_marginTop="75dp"
+        android:background="#40ffffff"
+        android:text="@string/options"
+        android:textColor="#ffffffff" />
+
+
+</RelativeLayout>
