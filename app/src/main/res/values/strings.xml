@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Meal Decision</string>
     <string name="not_specified">Not Specified</string>
+    <string name="other">Other</string>
+    <string name="error_parser"> is not a number.</string>
 
     <string name="category_vegetables">Vegetables</string>
         <string name="potato">Potato</string>

@@ -39,6 +39,7 @@ public class ChooseIngredientActivity extends AppCompatActivity {
     public static final String TAG = ChooseIngredientActivity.class.getSimpleName();
     private SimpleIngredientsAdapter adapter;
     private SharedPreferences prefs;
+    private ArrayList<Recipe> recipes;
     @InjectView(R.id.chooseIngredientList)
     ListView mListView;
     @InjectView(R.id.emptyTextView)
@@ -65,9 +66,9 @@ public class ChooseIngredientActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         final int recipeIndex = extras.getInt("recipeIndex");
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        recipes = Utilities.loadRecipies(this);
 
-
-        ArrayList<Shop> shops = Utilities.loadShops(this);
+        final ArrayList<Shop> shops = Utilities.loadShops(this);
         String currentShopName = prefs.getString("currentShop","");
         Shop currentShop = null;
         for(Shop s: shops){
@@ -118,6 +119,35 @@ public class ChooseIngredientActivity extends AppCompatActivity {
             }
 
         });
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                int pos, long id) {
+                    Log.d(TAG,"long clicked pos: " + pos);
+                    Ingredient removeIngredient = ingredients.get(pos);
+                    for(Recipe r : recipes){
+                        Ingredient remove=null;
+                        for (Ingredient i : r.getIngredients()){
+                            if (i.getName().equals(removeIngredient.getName())){
+                                Log.d(TAG,"Found: " + i.getName());
+                                remove = i;
+                            }
+                        }
+                        if (remove != null){
+                            Log.d(TAG,"Removed");
+                            r.getIngredients().remove(remove);
+                            Log.d(TAG,String.valueOf(r.getIngredients().size()));
+                        }
+                    }
+                    ingredients.remove(pos);
+                    adapter.notifyDataSetChanged();
+                    Utilities.saveShoppingList(c,ingredients);
+                    Utilities.saveRecipe(c,recipes);
+                    Utilities.saveShop(c,shops);
+                    return true;
+                }
+
+            });
         //adapter = new SimpleIngredientsAdapter(this, ingredients);
         Log.d(TAG, "IngredientsChecker3: "+ingredients.size());
         Utilities.saveShop(this,shops);

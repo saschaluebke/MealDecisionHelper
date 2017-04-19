@@ -20,6 +20,8 @@ import com.example.sascha.mealdecisionhelper.models.Category;
 import com.example.sascha.mealdecisionhelper.models.Ingredient;
 import com.example.sascha.mealdecisionhelper.models.Recipe;
 import com.example.sascha.mealdecisionhelper.models.Shop;
+import com.example.sascha.mealdecisionhelper.models.ShoppingList;
+import com.example.sascha.mealdecisionhelper.utils.Parser;
 import com.example.sascha.mealdecisionhelper.utils.Utilities;
 
 import org.w3c.dom.Text;
@@ -39,7 +41,7 @@ public class ChooseCharacteristicsActivity extends AppCompatActivity {
     private ArrayList<Category> categories;
     private Ingredient thisIngredient;
     private SharedPreferences prefs;
-    public static final String TAG = ChooseIngredientActivity.class.getSimpleName();
+    public static final String TAG = ChooseCharacteristicsActivity.class.getSimpleName();
     @InjectView(R.id.chooseCaracteristicsC)
     EditText mCaraEditText;
     @InjectView(R.id.unitSpinner)
@@ -109,27 +111,55 @@ public class ChooseCharacteristicsActivity extends AppCompatActivity {
 
     @OnClick(R.id.chooseCaracteristicsOKButton)
     public void startNewRecipeActivity(View view) {
+        String input = mCaraEditText.getText().toString();
+        Boolean isNumber = false;
+        Parser parser = new Parser(this);
+        Float output = parser.characteristicsParser(input);
+        if (!parser.getParsable()){
+
+        }else{
+            final int shoppingIndex = prefs.getInt("shoppingIndex",-1);
+            SharedPreferences.Editor editor = prefs.edit();
+            Ingredient newIngredient = new Ingredient(thisIngredient.getName());
+            newIngredient.setCharacteristics(output);
+            newIngredient.setUnit(thisIngredient.getUnit());
+            Log.d(TAG, "ShoppingIndex get = "+shoppingIndex);
+            if (shoppingIndex == 1){
+                ArrayList<Ingredient> specialIngredients = Utilities.loadSpecialIngredients(this);
+                specialIngredients.add(newIngredient);
+                Utilities.saveSpecialIngredients(this,specialIngredients);
+                editor.putInt("shoppingIndex",0);
+                editor.commit();
+                finish();
+            }else{
+                ArrayList<Recipe> recipes = Utilities.loadRecipies(this);
+                Recipe thisRecipe = recipes.get(recipeIndex);
+
+                Ingredient sameIngredient = null;
+                for(Ingredient i : thisRecipe.getIngredients()){
+                    if(newIngredient.getName().equals(i.getName())){
+                        sameIngredient = i;
+                        sameIngredient.setCharacteristics(sameIngredient.getCharacteristics()+newIngredient.getCharacteristics());
+                    }
+                }
+                if(sameIngredient==null){
+                    thisRecipe.getIngredients().add(newIngredient);
+                }
+                Utilities.saveRecipe(this,recipes);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+                editor.putInt("newIngredientCategoryIndex",categoryIndex);
+                editor.putInt("newIngredientIndex",ingredientIndex);
+                editor.putInt("recipeIndex",recipeIndex);
+                editor.commit();
+                finish();
+        }
 
 
 
-        Log.d(TAG, "Ingredient UI loads: "+thisIngredient.getName());
 
-        //thisIngredient.setUnit(mUnitEditText.getText().toString()); TODO setOnItemSelectedListener
-        Ingredient newIngredient = new Ingredient(thisIngredient.getName());
-        newIngredient.setCharacteristics(Integer.parseInt(mCaraEditText.getText().toString()));
-        newIngredient.setUnit(thisIngredient.getUnit());
+        }
 
-        ArrayList<Recipe> recipes = Utilities.loadRecipies(this);
-        Recipe thisRecipe = recipes.get(recipeIndex);
-        thisRecipe.getIngredients().add(thisIngredient);
 
-        Utilities.saveRecipe(this,recipes);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("newIngredientCategoryIndex",categoryIndex);
-        editor.putInt("newIngredientIndex",ingredientIndex);
-        editor.putInt("recipeIndex",recipeIndex);
-        editor.commit();
-        finish();
     }
 }

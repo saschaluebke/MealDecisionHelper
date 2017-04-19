@@ -22,14 +22,28 @@
         android:id="@+id/createNewShoppingList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="129dp"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="17dp"
         android:background="#40ffffff"
         android:text="@string/create_new_shoppinglist"
+        android:textColor="#ffffffff"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/shoppingAddIngredient"
+        android:layout_toEndOf="@+id/shoppingAddIngredient" />
+
+    <Button
+        android:id="@+id/shoppingAddIngredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/createNewShoppingList"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:background="#40ffffff"
+        android:text="@string/new_ingredient"
         android:textColor="#ffffffff" />
+
 
 </RelativeLayout>

@@ -16,9 +16,10 @@ public class Ingredient implements Serializable, Comparable<Ingredient> {
     private String name;
     private String unit;
     private float characteristics;
+    private Boolean isSelected;
 
     public Ingredient(){
-
+        isSelected = false;
     }
 
     public Ingredient(String name){
@@ -59,4 +60,14 @@ public class Ingredient implements Serializable, Comparable<Ingredient> {
     }
 
 
+    public Boolean getSelected() {
+        if (isSelected==null){
+            return false;
+        }
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.sascha.mealdecisionhelper.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,10 @@ public class IngredientsAdapter extends BaseAdapter {
             holder.charaLabel.setText(String.valueOf(ingredient.getCharacteristics()));
         }
 
-
+        convertView.setBackgroundColor(0xffaa00);
+        if (ingredient.getSelected()){
+            convertView.setBackgroundColor(Color.RED);
+        }
 
 
         return convertView;

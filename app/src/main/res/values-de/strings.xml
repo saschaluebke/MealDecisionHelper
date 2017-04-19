@@ -3,7 +3,8 @@
 <resources>
     <string name="app_name">Meal Decision</string>
     <string name="not_specified">Keine Angabe</string>
-
+    <string name="other">Sonstiges</string>
+    <string name="error_parser"> ist keine positive Zahl.</string>
 
     <string name="category_vegetables">Gemüse</string>
         <string name="potato">Kartoffel</string>

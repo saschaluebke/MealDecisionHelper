@@ -59,11 +59,11 @@ public class ChooseCategoryActivity extends AppCompatActivity {
         //Look for new Category
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String newCategoryName = prefs.getString("newCategory","");
+        SharedPreferences.Editor editor = prefs.edit();
 
         if (newCategoryName==null || newCategoryName==""){
             Log.d(TAG,"new Category not existend");
         }else{
-            SharedPreferences.Editor editor = prefs.edit();
             editor.putString("newCategory","");
             editor.commit();
             Category newCategory = new Category(newCategoryName);
@@ -74,7 +74,12 @@ public class ChooseCategoryActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         final int recipeIndex = extras.getInt("recipeIndex",-1);
-
+        final int shoppingIndex = extras.getInt("shoppingIndex",-1);
+        if(shoppingIndex==1) {
+            editor.putInt("shoppingIndex", 1);
+            editor.commit();
+        }
+        Log.d(TAG,"ShoppingIndex= "+shoppingIndex);
         shops = Utilities.loadShops(this);
         String currentShopName = prefs.getString("currentShop","");
         Shop currentShop=null;

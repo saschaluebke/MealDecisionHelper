@@ -47,27 +47,29 @@ public class RecipeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
-        if (convertView == null) {
-            // brand new
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, null);
-            holder = new ViewHolder();
+            if (convertView == null) {
+                // brand new
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.recipe_list_item, null);
+                holder = new ViewHolder();
 
-            holder.recipeLabel = (TextView) convertView.findViewById(R.id.recipeNameLable);
-            holder.priorLabel = (TextView) convertView.findViewById(R.id.prior);
+                holder.recipeLabel = (TextView) convertView.findViewById(R.id.recipeNameLable);
+                holder.priorLabel = (TextView) convertView.findViewById(R.id.prior);
 
-            convertView.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder) convertView.getTag();
-        }
+                convertView.setTag(holder);
+            }
+            else {
+                holder = (ViewHolder) convertView.getTag();
+            }
 
-        Recipe recipe = recipeList.get(position);
-        holder.recipeLabel.setText(recipe.getName());
-        holder.priorLabel.setText(String.valueOf(recipe.getPrior()));
-        convertView.setBackgroundColor(0xffaa00);
-        if (recipe.isSelected()){
-            convertView.setBackgroundColor(Color.GREEN);
-        }
+            Recipe recipe = recipeList.get(position);
+            holder.recipeLabel.setText(recipe.getName());
+            holder.priorLabel.setText(String.valueOf(recipe.getPrior()));
+            convertView.setBackgroundColor(0xffaa00);
+            if (recipe.isSelected()){
+                convertView.setBackgroundColor(Color.GREEN);
+            }
+
+
 
         return convertView;
     }

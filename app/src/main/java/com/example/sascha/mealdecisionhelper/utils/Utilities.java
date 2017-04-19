@@ -116,6 +116,37 @@ public class Utilities {
         return shoppingList;
     }
 
+    public static void saveSpecialIngredients(Context context, ArrayList<Ingredient> shoppingList){
+
+        File fileDirectory = context.getFilesDir();
+        File fileToWrite = new File(fileDirectory, "specialIngredients");
+
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileToWrite));
+            out.writeObject(shoppingList);
+            out.close();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Ingredient> loadSpecialIngredients (Context context) {
+        File fileDirectory = context.getFilesDir();
+        File file = new File(fileDirectory, "specialIngredients");
+        ArrayList<Ingredient> shoppingList = new ArrayList<>();
+        try{
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            shoppingList = (ArrayList<Ingredient>) in.readObject();
+            in.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return shoppingList;
+    }
+
     public static void saveRecipe(Context context, ArrayList<Recipe> recipeList){
 
         File fileDirectory = context.getFilesDir();

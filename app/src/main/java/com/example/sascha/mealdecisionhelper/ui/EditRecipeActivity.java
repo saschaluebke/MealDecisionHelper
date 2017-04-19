@@ -129,33 +129,13 @@ public class EditRecipeActivity extends AppCompatActivity {
             editor.putInt("newIngredientIndex",-1);
             editor.putInt("newIngredientCategoryIndex",-1);
             editor.commit();
-            ArrayList<Shop> shops = Utilities.loadShops(this);
-            String currentShopName = prefs.getString("currentShop","");
-            Shop currentShop = null;
-            for(Shop s: shops){
-                if (currentShopName.equals(s.getName())){
-                    currentShop = s;
-                }
-            }
-
-            categories = currentShop.getCategories();
-
-            Ingredient newIngredient = categories.get(newIngredientCategoryIndex).getIngredients().get(newIngredientIndex);
-            Ingredient sameIngredient=null;
-            for(Ingredient i : ingredients){
-                if (i.getName().equals(newIngredient.getName())){
-                    sameIngredient = i;
-                }
-            }
-            if(sameIngredient==null){
-                ingredients.add(newIngredient);
-            }else{
-                sameIngredient.setCharacteristics(newIngredient.getCharacteristics()+sameIngredient.getCharacteristics());
-            }
-            Log.d(TAG,newIngredient.getName()+"/: "+newIngredient.toString());
-            adapter.notifyDataSetChanged();
-            Utilities.saveRecipe(this,recipes);
         }
+        recipes = Utilities.loadRecipies(this);
+        thisRecipe = recipes.get(index);
+        ingredients = thisRecipe.getIngredients();
+        Log.d(TAG,thisRecipe.getName()+": "+thisRecipe.getIngredients().size());
+        adapter = new IngredientsAdapter(this, ingredients);
+        mListView.setAdapter(adapter);
     }
 
     @Override

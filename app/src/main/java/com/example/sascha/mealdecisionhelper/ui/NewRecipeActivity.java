@@ -35,7 +35,7 @@ public class NewRecipeActivity extends AppCompatActivity {
     private Recipe thisRecipe;
     private ArrayList<Ingredient> ingredients;
     private ArrayList<Category> categories;
-    public static final String TAG = RecipeActivity.class.getSimpleName();
+    public static final String TAG = NewRecipeActivity.class.getSimpleName();
     private int prior;
     @InjectView(R.id.ingredientsList) ListView mListView;
     @InjectView(R.id.emptyTextView) TextView mEmptyTextView;
@@ -57,22 +57,14 @@ public class NewRecipeActivity extends AppCompatActivity {
             Log.d(TAG,"Recipes sind null sollte nicht passieren");
         }
         thisRecipe = new Recipe();
+        recipes.add(thisRecipe);
+
+        Utilities.saveRecipe(this,recipes);
+
         ingredients = thisRecipe.getIngredients();
-        adapter = new IngredientsAdapter(this, ingredients);
+
+         adapter = new IngredientsAdapter(this, ingredients);
         mListView.setAdapter(adapter);
-
-       /* Intent intent = getIntent();
-        String newIngredientName = intent.getStringExtra("newIngredient");
-        if (newIngredientName==null || newIngredientName.equals("")){
-
-        }else{
-            Log.d(TAG,"New ingredient: "+newIngredientName);
-            Ingredient newIngredient = new Ingredient();
-            newIngredient.setName(newIngredientName);
-            ingredients.add(newIngredient);
-            adapter.notifyDataSetChanged();
-        }
-*/
 
         final Context c = this;
         mListView.setEmptyView(mEmptyTextView);
@@ -123,45 +115,34 @@ public class NewRecipeActivity extends AppCompatActivity {
             editor.putInt("newIngredientIndex",-1);
             editor.putInt("newIngredientCategoryIndex",-1);
             editor.commit();
-            ArrayList<Shop> shops = Utilities.loadShops(this);
-            String currentShopName = prefs.getString("currentShop","");
-            Shop currentShop = null;
-            for(Shop s: shops){
-                if (currentShopName.equals(s.getName())){
-                    currentShop = s;
-                }
-            }
-
-            categories = currentShop.getCategories();
-
-            Ingredient newIngredient = categories.get(newIngredientCategoryIndex).getIngredients().get(newIngredientIndex);
-
-            Ingredient sameIngredient=null;
-            for(Ingredient i : ingredients){
-                if (i.getName().equals(newIngredient.getName())){
-                    sameIngredient = i;
-                }
-            }
-            if(sameIngredient==null){
-                ingredients.add(newIngredient);
-            }else{
-                sameIngredient.setCharacteristics(newIngredient.getCharacteristics()+sameIngredient.getCharacteristics());
-            }
-
-            Log.d(TAG,newIngredient.getName()+"/: "+newIngredient.toString());
-            adapter.notifyDataSetChanged();
-            Utilities.saveRecipe(this,recipes);
-
         }
+        ArrayList<Shop> shops = Utilities.loadShops(this);
+        String currentShopName = prefs.getString("currentShop","");
+        Shop currentShop = null;
+        for(Shop s: shops){
+            if (currentShopName.equals(s.getName())){
+                currentShop = s;
+            }
+        }
+        recipes = Utilities.loadRecipies(this);
+        thisRecipe = recipes.get(recipes.size()-1);
+        ingredients = thisRecipe.getIngredients();
+        adapter = new IngredientsAdapter(this, ingredients);
+        mListView.setAdapter(adapter);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        thisRecipe.setPrior(prior);
+        thisRecipe.setName(mNameRecipeEditText.getText().toString());
+        Utilities.saveRecipe(this, recipes);    }
 
 
     @OnClick(R.id.newRecipeOkButton)
     public void saveNewRecipe(View view) {
-        Intent intent = new Intent(this, RecipeActivity.class);
         thisRecipe.setPrior(prior);
         thisRecipe.setName(mNameRecipeEditText.getText().toString());
-        recipes.add(thisRecipe);
         Utilities.saveRecipe(this, recipes);
         finish();
     }

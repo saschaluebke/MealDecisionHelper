@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 ingFrozen.add( new Ingredient(c.getString(R.string.frozen_berries)));
                 ingFrozen.add( new Ingredient(c.getString(R.string.ice_cream)));
                 ingFrozen.add( new Ingredient(c.getString(R.string.frozen_salmon)));
-                Category frozen = new Category(c.getString(R.string.pickled_ware),ingFrozen);
+                Category frozen = new Category(c.getString(R.string.frozen_food),ingFrozen);
 
 
                 ArrayList<Ingredient> ingDairy = new ArrayList<>();
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 ingDairy.add( new Ingredient(c.getString(R.string.mozzarella)));
                 ingDairy.add( parmesan);
                 ingDairy.add( new Ingredient(c.getString(R.string.pizza_cheese)));
-                Category dairy = new Category(c.getString(R.string.frozen_food),ingDairy);
+                Category dairy = new Category(c.getString(R.string.dairy_products),ingDairy);
 
 
                 ArrayList<Ingredient> ingBakery = new ArrayList<>();
@@ -142,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayList<Ingredient> ingPasta = new ArrayList<>();
                 Ingredient spagetti = new Ingredient(c.getString(R.string.spaghetti));
-                ingBakery.add( spagetti);
-                ingBakery.add( new Ingredient(c.getString(R.string.lasagne_plates)));
+                ingPasta.add( spagetti);
+                ingPasta.add( new Ingredient(c.getString(R.string.lasagne_plates)));
                 Category pasta = new Category(c.getString(R.string.pasta),ingPasta);
 
 
@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 ArrayList<Ingredient> ingOther = new ArrayList<>();
-                ingOther.add( new Ingredient(c.getString(R.string.toilet_paper)));
+                Ingredient toilet = new Ingredient(c.getString(R.string.toilet_paper));
+                ingOther.add(toilet);
                 Category other = new Category(c.getString(R.string.category_other),ingOther);
 
 
@@ -231,8 +232,20 @@ public class MainActivity extends AppCompatActivity {
                 ingBolognese.add(parmesan);
                 ingBolognese.add(onion);
                 ingBolognese.add(garlic);
+
+
+                Recipe defaultRecipe2 = new Recipe();
+                defaultRecipe2.setName(c.getString(R.string.other));
+                defaultRecipe2.setPrior(100);
+                defaultRecipe2.setSelected(false);
+                ArrayList<Ingredient> ingredientsOther = defaultRecipe2.getIngredients();
+                ingredientsOther.add(toilet);
+
                 ArrayList<Recipe> defaultRecipeList = new ArrayList<>();
+                defaultRecipeList.add(defaultRecipe2);
                 defaultRecipeList.add(defaultRecipe);
+
+
                 Utilities.saveRecipe(this,defaultRecipeList);
 
             }

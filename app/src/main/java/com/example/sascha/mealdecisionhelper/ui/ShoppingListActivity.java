@@ -41,14 +41,47 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
         ButterKnife.inject(this);
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         ingredients = Utilities.loadShoppingList(this);
+        final ArrayList<Ingredient> specialIngredients = Utilities.loadSpecialIngredients(this);
+        ingredients.addAll(specialIngredients);
         adapter = new IngredientsAdapter(this, ingredients);
         mListView.setAdapter(adapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ingredient ingredient = ingredients.get(position);
+                if(ingredient.getSelected()){
+                    ingredient.setSelected(false);
+                }else{
+                    ingredient.setSelected(true);
+                }
+                Utilities.saveSpecialIngredients(c,specialIngredients);
+                Utilities.saveShoppingList(c,ingredients);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int pos, long id) {
                 Log.d(TAG,"long clicked pos: " + pos);
+                Ingredient remove = null;
+                for(Ingredient i : specialIngredients){
+                    if(i.getName().equals(ingredients.get(pos).getName())){
+                        remove = i;
+                    }
+                }
+                if (remove != null){
+                    specialIngredients.remove(remove);
+                    Utilities.saveSpecialIngredients(c,specialIngredients);
+                }
                 ingredients.remove(pos);
                 adapter.notifyDataSetChanged();
                 Utilities.saveShoppingList(c,ingredients);
@@ -80,9 +113,20 @@ public class ShoppingListActivity extends AppCompatActivity {
         if (categories == null){
             Log.d(TAG, "Fail to load Recipe");
         }
-
+        ArrayList<Ingredient> specialIngredients = Utilities.loadSpecialIngredients(this);
         ingredients = new ArrayList<>();
         for(Category c : categories){
+            //search special Ingredients
+
+            for(Ingredient i : specialIngredients){
+                for(Ingredient inCategory : c.getIngredients()){
+                    if(inCategory.getName().equals(i.getName())){
+                        ingredients.add(i);
+                    }
+                }
+            }
+
+            //search ingredients from recipes
             for(Recipe r : recipes){
                 if (r.isSelected()){
                     for (Ingredient i : r.getIngredients()){
@@ -135,4 +179,12 @@ public class ShoppingListActivity extends AppCompatActivity {
         Utilities.saveShoppingList(this,ingredients);
 
     }
+
+    @OnClick(R.id.shoppingAddIngredient)
+    public void addIngredient(View view) {
+        Intent intent = new Intent(this, ChooseCategoryActivity.class);
+        intent.putExtra("shoppingIndex",1);
+        startActivity(intent);
+    }
+
 }
